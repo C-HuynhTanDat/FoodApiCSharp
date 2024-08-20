@@ -1,0 +1,40 @@
+﻿@page "/addfooditem"
+@using FoodApiC.Models
+@inject FoodBlazorC.Data.FoodItemService FoodItemService
+@inject NavigationManager NavigationManager
+
+<h3>Add Food Item</h3>
+<PageTitle>Add-Food</PageTitle>
+
+<EditForm Model="foodItem" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <InputText class="form-control" @bind-Value="foodItem.Name" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Description</label>
+        <InputTextArea class="form-control" @bind-Value="foodItem.Description" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Price</label>
+        <InputNumber class="form-control" @bind-Value="foodItem.Price" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image URL</label>
+        <InputText class="form-control" @bind-Value="foodItem.ImageUrl" />
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+</EditForm>
+
+@code {
+    private FoodItem foodItem = new FoodItem();
+
+    private async Task HandleValidSubmit()
+    {
+        await FoodItemService.CreateFoodItemAsync(foodItem);
+        NavigationManager.NavigateTo("/fooditems");
+    }
+}

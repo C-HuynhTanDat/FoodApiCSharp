@@ -1,0 +1,29 @@
+﻿@page "/food-detail/{id:int}"
+@inject NavigationManager navigation
+
+@if (foodItem != null)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="Image/@foodItem.ImageUrl" alt="..." class="img-fluid" />
+            </div>
+            <div class="col-md-6">
+                <h1>@foodItem.Name</h1>
+                <p>@foodItem.Description</p>
+                <h2>$@foodItem.Price</h2>
+                <a href="/" class="btn btn-primary">Back to Shop</a>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <p>Loading...</p>
+}
+
+<h3>ViewDetail</h3>
+
+@code {
+
+}

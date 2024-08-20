@@ -1,0 +1,54 @@
+﻿@page "/fooditems"
+@using FoodApiC.Models
+@inject FoodBlazorC.Data.FoodItemService FoodItemService
+
+<h3>FoodItems</h3>
+<PageTitle>Food</PageTitle>
+
+@if (foodItems == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in foodItems)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Price</td>
+                    <td><img style="height:100px; width:150px" src="/Image/@item.ImageUrl" alt="Alternate Text" /></td>
+                    <td>
+                        <a href="/editfooditem/@item.FoodItemId" class="btn btn-primary">Edit</a>
+                        <button @onclick="() => DeleteItem(item.FoodItemId)" class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<FoodItem> foodItems;
+
+    protected override async Task OnInitializedAsync()
+    {
+        foodItems = await FoodItemService.GetFoodItemsAsync();
+    }
+
+    private async Task DeleteItem(int id)
+    {
+        await FoodItemService.DeleteFoodItemAsync(id);
+        foodItems = await FoodItemService.GetFoodItemsAsync();
+    }
+}

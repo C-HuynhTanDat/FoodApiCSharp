@@ -1,0 +1,47 @@
+﻿@page "/editfooditem/{FoodItemId:int}"
+@using FoodApiC.Models
+@inject FoodBlazorC.Data.FoodItemService FoodItemService
+@inject NavigationManager NavigationManager
+
+<h3>Edit Food Item</h3>
+
+<EditForm Model="foodItem" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <InputText class="form-control" @bind-Value="foodItem.Name" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Description</label>
+        <InputTextArea class="form-control" @bind-Value="foodItem.Description" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Price</label>
+        <InputNumber class="form-control" @bind-Value="foodItem.Price" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Image URL</label>
+        <InputText class="form-control" @bind-Value="foodItem.ImageUrl" />
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</EditForm>
+
+@code {
+    [Parameter]
+    public int FoodItemId { get; set; }
+
+    private FoodItem? foodItem;
+
+    protected override async Task OnInitializedAsync()
+    {
+        foodItem = await FoodItemService.GetFoodItemByIdAsync(FoodItemId);
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        await FoodItemService.UpdateFoodItemAsync(foodItem);
+        NavigationManager.NavigateTo("/fooditems");
+    }
+}

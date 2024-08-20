@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodApiC", "FoodApiC\FoodApiC.csproj", "{A818C5A2-AD88-436E-B10A-0B1C1929CC8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodBlazorC", "FoodBlazorC\FoodBlazorC.csproj", "{0DCE2555-4476-461A-A609-8EABC07472A3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A818C5A2-AD88-436E-B10A-0B1C1929CC8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A818C5A2-AD88-436E-B10A-0B1C1929CC8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A818C5A2-AD88-436E-B10A-0B1C1929CC8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A818C5A2-AD88-436E-B10A-0B1C1929CC8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DCE2555-4476-461A-A609-8EABC07472A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DCE2555-4476-461A-A609-8EABC07472A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DCE2555-4476-461A-A609-8EABC07472A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DCE2555-4476-461A-A609-8EABC07472A3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {04F4405A-6BE9-4217-8A25-3BBDF41D5A27}
+	EndGlobalSection
+EndGlobal
